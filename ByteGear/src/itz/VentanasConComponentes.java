@@ -14,13 +14,17 @@ public class VentanasConComponentes {
             createAndShowGUI();
         });
     }
-
     private static void createAndShowGUI() {
         JFrame frame = new JFrame("Ventanas con Componentes");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-
+        // Personaliza la barra de título
+        frame.getRootPane().setBackground(new Color(0, 0, 128)); // Azul oscuro
         JToolBar toolbar = new JToolBar();
+        toolbar.setBackground(new Color(128, 128, 128)); // Gris rata
 
+        JButton buttonWithText = new JButton("Componentes");
+        buttonWithText.setBackground(Color.GRAY);
+        buttonWithText.setForeground(Color.BLACK);
         JButton buttonWithText = new JButton("Componenetes");
         buttonWithText.addActionListener(new ActionListener() {
             @Override
@@ -51,15 +55,14 @@ public class VentanasConComponentes {
         frame.setLocationRelativeTo(null);
         frame.setVisible(true);
     }
-
     private static void mostrarNuevaVentana() {
         JFrame nuevaVentana = new JFrame("Nueva Ventana");
         nuevaVentana.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-
         // Agregar componentes a la nueva ventana
         JButton nuevoBoton = new JButton("Nuevo Botón");
+        nuevoBoton.setBackground(new Color(13, 69, 128)); // Color Azul petróleo
+     nuevoBoton.setForeground(Color.WHITE);
         nuevaVentana.add(nuevoBoton);
-
         // Configurar la nueva ventana
         nuevaVentana.setSize(200, 150);
         nuevaVentana.setLocationRelativeTo(null);
