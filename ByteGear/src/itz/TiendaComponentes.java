@@ -19,7 +19,7 @@ class TiendaComponentes extends JFrame {
 
     public TiendaComponentes() {
         inventario = new ArrayList<>();
-        setTitle("Tienda de Componentes");
+        setTitle("ByteGear");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setSize(400, 300);
         
@@ -30,12 +30,13 @@ class TiendaComponentes extends JFrame {
         // Crear botones para la barra de herramientas
         JButton botonImagenMenu = new JButton(new ImageIcon("src/recursos/opciones.png"));
         // Reemplaza con la ruta de tu imagen
-
+        // Personalizar colores de la barra de herramientas
+        toolbar.setBackground(new Color(0, 102, 204)); // Azul
+        botonImagenMenu.setBackground(new Color(0, 102, 204)); // Azul
+        botonImagenMenu.setForeground(Color.WHITE);
         // Agregar acción al botón
         botonImagenMenu.addActionListener(e -> {
-            // Puedes agregar lógica aquí para manejar la acción del botón
-           
-            
+            // Puedes agregar lógica aquí para manejar la acción del botón      
         });
 
         // Agregar botón a la barra de herramientas
@@ -47,7 +48,7 @@ class TiendaComponentes extends JFrame {
 
     public void agregarComponente(Componente componente) {
         inventario.add(componente);
-    }
+S    }
 
     public static void main(String[] args) {
     	TiendaComponentes tienda = new TiendaComponentes();
