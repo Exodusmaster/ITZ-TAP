@@ -1,9 +1,6 @@
 package itz;
-//hola
-// Hola 2
-import javax.swing.*;
-import javax.swing.plaf.DimensionUIResource;
 
+import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -14,99 +11,86 @@ public class VentanasConComponentes {
             createAndShowGUI();
         });
     }
+
     private static void createAndShowGUI() {
+        // Crear y configurar el JFrame principal
         JFrame frame = new JFrame("Ventanas con Componentes");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        // Personaliza la barra de título
-        frame.getRootPane().setBackground(new Color(0, 0, 128)); // Azul oscuro
-        JToolBar toolbar = new JToolBar();
-        toolbar.setBackground(new Color(128, 128, 128)); // Gris rata
 
+        // Crear y configurar la barra de herramientas
+        JToolBar toolbar = new JToolBar();
+        toolbar.setBackground(new Color(128, 128, 128)); // Color de fondo
+
+        // Crear y configurar el botón con texto
         JButton buttonWithText = new JButton("Componentes");
         buttonWithText.setBackground(Color.GRAY);
         buttonWithText.setForeground(Color.BLACK);
-        buttonWithText.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                // Crear y mostrar una nueva ventana o diálogo
-                mostrarNuevaVentana();
-            }
-        });
+        buttonWithText.addActionListener(e -> mostrarNuevaVentana()); // Acción al hacer clic
 
-        JButton buttonWithIcon = new JButton(new ImageIcon("src/recursos/opciones2.png"));// Reemplaza con la ruta de tu imagen
-        buttonWithIcon.setPreferredSize(new DimensionUIResource(2, 1));
-        buttonWithIcon.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                // Crear y mostrar una nueva ventana o diálogo
-                mostrarNuevaVentana();
-            }
-        });
-        //
-         // Agregar el botón de usuario con un submenú
+        // Crear y configurar el botón con ícono
+        JButton buttonWithIcon = new JButton(new ImageIcon("src/recursos/opciones2.png"));
+        buttonWithIcon.setPreferredSize(new Dimension(32, 32));
+        buttonWithIcon.addActionListener(e -> mostrarNuevaVentana()); // Acción al hacer clic
+
+        // Crear y configurar el menú de usuario
         JMenu usuarioMenu = new JMenu("Usuario");
         JMenuItem iniciarSesionMenuItem = new JMenuItem("Iniciar Sesión");
         JMenuItem registrarMenuItem = new JMenuItem("Registrar");
 
-        // ActionListener para las opciones del submenú
-        iniciarSesionMenuItem.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-              //  JOptionPane.showMessageDialog(frame, "Iniciando Sesión..."); // Mostrar mensaje de inicio de sesión
-            }
+        // Acciones para las opciones del menú de usuario
+        iniciarSesionMenuItem.addActionListener(e -> {
+            // Acciones al iniciar sesión
         });
 
-        registrarMenuItem.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                RegistroUsuario r = new RegistroUsuario();
-            }
+        registrarMenuItem.addActionListener(e -> {
+            RegistroUsuario r = new RegistroUsuario();
         });
-        
-        usuarioMenu.add(iniciarSesionMenuItem); // Agregar opción "Iniciar Sesión" al submenú
-        usuarioMenu.add(registrarMenuItem); // Agregar opción "Registrar" al submenú
 
-        JMenuBar menuBar = new JMenuBar(); // Crear barra de menú
-        menuBar.add(usuarioMenu); // Agregar submenú de usuario a la barra de menú
+        // Agregar opciones al menú de usuario
+        usuarioMenu.add(iniciarSesionMenuItem);
+        usuarioMenu.add(registrarMenuItem);
 
-        // Crear un Box para alinear el menú a la derecha
+        // Crear y configurar la barra de menú
+        JMenuBar menuBar = new JMenuBar();
+        menuBar.add(usuarioMenu);
+
+        // Crear una caja horizontal para alinear el menú a la derecha
         Box box = Box.createHorizontalBox();
         box.add(Box.createHorizontalGlue()); // Espacio elástico
         box.add(menuBar);
 
-        // Personalizar la barra de herramientas y agregar componentes
-        toolbar.setFloatable(false); // Desactivar flotabilidad de la barra de herramientas
-        toolbar.add(buttonWithIcon); // Agregar botón con ícono a la barra de herramientas
-        toolbar.addSeparator(); // Agregar separador
-        toolbar.add(buttonWithText); // Agregar botón con texto a la barra de herramientas
-        toolbar.addSeparator(); // Agregar separador
-        toolbar.add(box); // Agregar Box con el menú al toolbar, para alinearlo a la derecha
-        //
-        
-        toolbar.setFloatable(false);
+        // Configurar la barra de herramientas
+        toolbar.setFloatable(false); // Desactivar flotabilidad
         toolbar.add(buttonWithIcon);
-        toolbar.addSeparator();
+        toolbar.addSeparator(); // Separador
         toolbar.add(buttonWithText);
+        toolbar.add(box); // Añadir el menú a la barra de herramientas
 
-        frame.add(toolbar, BorderLayout.NORTH);
+        // Agregar la barra de herramientas al JFrame
+        frame.add(toolbar, BorderLayout.SOUTH);
 
-        // Configurar el frame
+        // Configurar el JFrame principal
         frame.setSize(300, 200);
         frame.setLocationRelativeTo(null);
         frame.setVisible(true);
     }
+
     private static void mostrarNuevaVentana() {
+        // Crear y configurar un nuevo JFrame para la nueva ventana
         JFrame nuevaVentana = new JFrame("Nueva Ventana");
         nuevaVentana.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-        // Agregar componentes a la nueva ventana
+
+        // Crear y configurar un nuevo botón para la nueva ventana
         JButton nuevoBoton = new JButton("Nuevo Botón");
-        nuevoBoton.setBackground(new Color(13, 69, 128)); // Color Azul petróleo
-     nuevoBoton.setForeground(Color.WHITE);
+        nuevoBoton.setBackground(new Color(13, 69, 128));
+        nuevoBoton.setForeground(Color.WHITE);
+
+        // Agregar el nuevo botón a la nueva ventana
         nuevaVentana.add(nuevoBoton);
+
         // Configurar la nueva ventana
         nuevaVentana.setSize(200, 150);
         nuevaVentana.setLocationRelativeTo(null);
         nuevaVentana.setVisible(true);
     }
 }
-
