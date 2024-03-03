@@ -10,7 +10,7 @@ import java.util.List;
 
 public class ModelTable extends AbstractTableModel {
 	private List<RegistroUsuario> re;
-	private String[] columnas= {"N0mbre ","Carrera","Semestre"};
+	private String[] columnas= {"Usuario ","Correo","Contraseña"};
 		 
 		public ModelTable(List<RegistroUsuario> re) {
 		 this.re= re;
