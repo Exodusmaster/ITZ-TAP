@@ -48,7 +48,7 @@ class TiendaComponentes extends JFrame {
 
     public void agregarComponente(Componente componente) {
         inventario.add(componente);
-S    }
+    }
 
     public static void main(String[] args) {
     	TiendaComponentes tienda = new TiendaComponentes();
