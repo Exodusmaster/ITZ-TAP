@@ -25,7 +25,6 @@ public class VentanasConComponentes {
         JButton buttonWithText = new JButton("Componentes");
         buttonWithText.setBackground(Color.GRAY);
         buttonWithText.setForeground(Color.BLACK);
-        JButton buttonWithText = new JButton("Componenetes");
         buttonWithText.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
