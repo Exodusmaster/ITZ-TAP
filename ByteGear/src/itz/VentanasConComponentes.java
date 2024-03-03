@@ -59,7 +59,7 @@ public class VentanasConComponentes {
         registrarMenuItem.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-               // JOptionPane.showMessageDialog(frame, "Registrando..."); // Mostrar mensaje de registro
+                RegistroUsuario r = new RegistroUsuario();
             }
         });
         
