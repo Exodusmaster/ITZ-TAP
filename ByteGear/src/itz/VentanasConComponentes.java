@@ -67,7 +67,7 @@ public class VentanasConComponentes {
         toolbar.add(box); // Añadir el menú a la barra de herramientas
 
         // Agregar la barra de herramientas al JFrame
-        frame.add(toolbar, BorderLayout.SOUTH);
+        frame.add(toolbar, BorderLayout.NORTH);
 
         // Configurar el JFrame principal
         frame.setSize(300, 200);
