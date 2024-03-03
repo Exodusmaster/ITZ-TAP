@@ -43,7 +43,7 @@ public class VentanasConComponentes {
         });
 
         registrarMenuItem.addActionListener(e -> {
-            RegistroUsuario r = new RegistroUsuario();
+           tabla t = new tabla();
         });
 
         // Agregar opciones al menú de usuario
