@@ -42,6 +42,47 @@ public class VentanasConComponentes {
                 mostrarNuevaVentana();
             }
         });
+        //
+         // Agregar el botón de usuario con un submenú
+        JMenu usuarioMenu = new JMenu("Usuario");
+        JMenuItem iniciarSesionMenuItem = new JMenuItem("Iniciar Sesión");
+        JMenuItem registrarMenuItem = new JMenuItem("Registrar");
+
+        // ActionListener para las opciones del submenú
+        iniciarSesionMenuItem.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+              //  JOptionPane.showMessageDialog(frame, "Iniciando Sesión..."); // Mostrar mensaje de inicio de sesión
+            }
+        });
+
+        registrarMenuItem.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+               // JOptionPane.showMessageDialog(frame, "Registrando..."); // Mostrar mensaje de registro
+            }
+        });
+        
+        usuarioMenu.add(iniciarSesionMenuItem); // Agregar opción "Iniciar Sesión" al submenú
+        usuarioMenu.add(registrarMenuItem); // Agregar opción "Registrar" al submenú
+
+        JMenuBar menuBar = new JMenuBar(); // Crear barra de menú
+        menuBar.add(usuarioMenu); // Agregar submenú de usuario a la barra de menú
+
+        // Crear un Box para alinear el menú a la derecha
+        Box box = Box.createHorizontalBox();
+        box.add(Box.createHorizontalGlue()); // Espacio elástico
+        box.add(menuBar);
+
+        // Personalizar la barra de herramientas y agregar componentes
+        toolbar.setFloatable(false); // Desactivar flotabilidad de la barra de herramientas
+        toolbar.add(buttonWithIcon); // Agregar botón con ícono a la barra de herramientas
+        toolbar.addSeparator(); // Agregar separador
+        toolbar.add(buttonWithText); // Agregar botón con texto a la barra de herramientas
+        toolbar.addSeparator(); // Agregar separador
+        toolbar.add(box); // Agregar Box con el menú al toolbar, para alinearlo a la derecha
+        //
+        
         toolbar.setFloatable(false);
         toolbar.add(buttonWithIcon);
         toolbar.addSeparator();
