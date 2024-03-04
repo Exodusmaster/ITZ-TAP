@@ -1,6 +1,6 @@
 ## BYTEGEAR
 
-Descripción concisa del proyecto.
+Venta de componentes de PC
 
 ## Video primer avance
 
