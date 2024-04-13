@@ -21,122 +21,136 @@ import javax.swing.JOptionPane;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 
-
 public class tabla extends JFrame implements ActionListener {
-    private List<RegistroUsuario> re;
-    private JTable tablaRegistro;
-    private JButton btnagregar, btneliminar, btnmodificar;
-    private ModelTable modelo;
-    private JScrollPane scroll;
-    private JMenuBar menubar;
-    private JMenu menu;
-    private JMenuItem guardar, cargar;
 
-    public tabla() {
-        super("Registro Usuario");
-        // Configuración de la barra de menú
-        menubar = new JMenuBar();
-        menu = new JMenu("Archivo");
-        guardar = new JMenuItem("Guardar");
-        guardar.addActionListener(this);
-        cargar = new JMenuItem("Cargar");
-        cargar.addActionListener(this);
-        menu.add(guardar);
-        menu.add(cargar);
-        menubar.add(menu);
-        this.setJMenuBar(menubar);
+	// Declaración de variables
+	private List<RegistroUsuario> re; // Lista para almacenar los registros de usuarios
+	private JTable tablaRegistro; // Tabla para mostrar los registros
+	private JButton btnagregar, btneliminar, btnmodificar; // Botones para agregar, eliminar y modificar registros
+	private ModelTable modelo; // Modelo para la tabla
+	private JScrollPane scroll; // Panel de desplazamiento para la tabla
+	private JMenuBar menubar; // Barra de menú
+	private JMenu menu; // Menú
+	private JMenuItem guardar, cargar; // Elementos del menú para guardar y cargar
 
-        // Configuración de la tabla y el modelo
-        re = new ArrayList<RegistroUsuario>();
-        modelo = new ModelTable(re);
-        tablaRegistro = new JTable(modelo);
-        scroll = new JScrollPane();
-        scroll.setPreferredSize(new Dimension(200, 200));
-        scroll.setViewportView(tablaRegistro);
+	// Constructor de la clase
+	public tabla() {
+		super("Registro Usuario"); // Título de la ventana
+		// Configuración de la barra de menú
+		menubar = new JMenuBar();
+		menu = new JMenu("Archivo");
+		guardar = new JMenuItem("Guardar");
+		guardar.addActionListener(this);
+		cargar = new JMenuItem("Cargar");
+		cargar.addActionListener(this);
+		menu.add(guardar);
+		menu.add(cargar);
+		menubar.add(menu);
+		this.setJMenuBar(menubar);
 
-        // Configuración de los botones
-        btnagregar = new JButton("Agregar");
-        btnagregar.addActionListener(this);
-        btneliminar = new JButton("Eliminar");
-        btneliminar.addActionListener(this);
-        btnmodificar = new JButton("Modificar");
-        btnmodificar.addActionListener(this);
+		// Inicialización de la lista de registros
+		re = new ArrayList<RegistroUsuario>();
+		// Creación del modelo de tabla
+		modelo = new ModelTable(re);
+		// Creación de la tabla y el panel de desplazamiento
+		tablaRegistro = new JTable(modelo);
+		scroll = new JScrollPane();
+		scroll.setPreferredSize(new Dimension(200, 200));
+		scroll.setViewportView(tablaRegistro);
 
-        // Configuración del diseño de la ventana
-        this.setLayout(new FlowLayout());
-        this.setSize(300, 300);
-        this.add(scroll);
-        this.add(btnagregar);
-        this.add(btneliminar);
-        this.add(btnmodificar);
-        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        this.setVisible(true);
-    }
+		// Creación y configuración de botones
+		btnagregar = new JButton("Agregar");
+		btnagregar.addActionListener(this);
+		btneliminar = new JButton("Eliminar");
+		btneliminar.addActionListener(this);
+		btnmodificar = new JButton("Modificar");
+		btnmodificar.addActionListener(this);
 
-    // Manejo de eventos de los botones y elementos del menú
-    @Override
-    public void actionPerformed(ActionEvent e) {
-        if (e.getSource() == btnagregar) {
-            // Agregar un nuevo registro
-            RegistroUsuario rex = new RegistroUsuario();
-            rex.pedirDatos();
-            if (rex.getNombre() != null) {
-                re.add(rex);
-                modelo.fireTableDataChanged();
-            }
-        } else if (e.getSource() == btneliminar) {
-            // Eliminar un registro seleccionado
-            int pos = tablaRegistro.getSelectedRow();
-            if (pos >= 0) {
-                re.remove(pos);
-                modelo.fireTableDataChanged();
-            }
-        } else if (e.getSource() == btnmodificar) {
-            // Modificar un registro seleccionado
-            int pos = tablaRegistro.getSelectedRow();
-            if (pos >= 0) {
-                RegistroUsuario rex = re.get(pos);
-                rex.modificarDatos();
-                if (rex.getNombre() != null) {
-                    re.set(pos, rex);
-                    modelo.fireTableDataChanged();
-                }
-            }
-        } else if (e.getSource() == guardar) {
-            // Guardar los datos en un archivo CSV
-            try {
-                FileWriter archivo = new FileWriter("Registro.csv");
-                BufferedWriter bw = new BufferedWriter(archivo);
-                for (RegistroUsuario a : re) {
-                    bw.append(a.toString());
-                }
-                bw.close();
-                JOptionPane.showMessageDialog(null, "Archivo creado con éxito");
-            } catch (IOException e1) {
-                JOptionPane.showMessageDialog(null, "Error al crear archivo");
-            }
-        } else if (e.getSource() == cargar) {
-            // Cargar los datos desde un archivo CSV
-            try {
-                re.clear();
-                FileReader archivo = new FileReader("Registro.csv");
-                BufferedReader br = new BufferedReader(archivo);
-                RegistroUsuario rex;
-                String linea = "";
-                String campos[];
-                do {
-                    linea = br.readLine();
-                    if (linea != null) {
-                        campos = linea.split(",");
-                        rex = new RegistroUsuario(campos[0], campos[1], campos[2]);
-                        re.add(rex);
-                    }
-                } while (linea != null);
-                br.close();
-                modelo.fireTableDataChanged();
-            } catch (Exception ex) {
-                JOptionPane.showMessageDialog(null, "Error al abrir archivo");
-            }
-        }
-    }
+		// Configuración del diseño y tamaño de la ventana
+		this.setLayout(new FlowLayout());
+		this.setSize(300, 300);
+		// Agregar componentes a la ventana
+		this.add(scroll);
+		this.add(btnagregar);
+		this.add(btneliminar);
+		this.add(btnmodificar);
+		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); // Operación de cierre de la ventana
+		this.setVisible(true); // Hacer visible la ventana
+	}
+
+	// Método para manejar eventos de acción
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		// Si se hace clic en el botón de agregar
+		if (e.getSource() == btnagregar) {
+			RegistroUsuario rex = new RegistroUsuario(); // Crear un nuevo registro de usuario
+			rex.pedirDatos(); // Pedir datos para el registro de usuario
+			if (rex.getNombre() != null) { // Si se ingresó un nombre (es decir, no se canceló la operación)
+				re.add(rex); // Agregar el registro a la lista
+				modelo.fireTableDataChanged(); // Notificar al modelo que los datos han cambiado
+			}
+		}
+		// Si se hace clic en el botón de eliminar
+		if (e.getSource() == btneliminar) {
+			int pos = tablaRegistro.getSelectedRow(); // Obtener la fila seleccionada en la tabla
+			if (pos >= 0) { // Si se ha seleccionado una fila
+				re.remove(pos); // Eliminar el registro de la lista
+				modelo.fireTableDataChanged(); // Notificar al modelo que los datos han cambiado
+			}
+		}
+		// Si se hace clic en el botón de modificar
+		if (e.getSource() == btnmodificar) {
+			int pos = tablaRegistro.getSelectedRow(); // Obtener la fila seleccionada en la tabla
+			if (pos >= 0) { // Si se ha seleccionado una fila
+				RegistroUsuario rex = re.get(pos); // Obtener el registro de la lista
+				rex.modificarDatos(); // Modificar los datos del registro
+				if (rex.getNombre() != null) { // Si se realizaron modificaciones (es decir, no se canceló la operación)
+					re.set(pos, rex); // Actualizar el registro en la lista
+					modelo.fireTableDataChanged(); // Notificar al modelo que los datos han cambiado
+				}
+			}
+		}
+		// Si se hace clic en el elemento de menú guardar
+		if (e.getSource() == guardar) {
+			try {
+				FileWriter archivo = new FileWriter("Registro.csv"); // Crear un FileWriter para el archivo
+																		// "Registro.csv"
+				BufferedWriter bw = new BufferedWriter(archivo); // Crear un BufferedWriter para escribir en el archivo
+				for (RegistroUsuario a : re) { // Iterar sobre la lista de registros de usuarios
+					bw.append(a.toString()); // Escribir la representación de cadena del registro en el archivo
+				}
+				bw.close(); // Cerrar el BufferedWriter
+				JOptionPane.showMessageDialog(null, "Archivo creado con éxito"); // Mostrar un mensaje de éxito
+			} catch (IOException e1) {
+				JOptionPane.showMessageDialog(null, "Error al crear archivo"); // Mostrar un mensaje de error si ocurre
+																				// una excepción
+			}
+		}
+		// Si se hace clic en el elemento de menú cargar
+		if (e.getSource() == cargar) {
+			try {
+				re.clear(); // Limpiar la lista de registros de usuarios
+				FileReader archivo = new FileReader("Registro.csv"); // Crear un FileReader para el archivo
+																		// "Registro.csv"
+				BufferedReader br = new BufferedReader(archivo); // Crear un BufferedReader para leer el archivo
+				RegistroUsuario rex; // Declarar una variable para almacenar cada registro leído
+				String linea = ""; // Variable para almacenar cada línea leída del archivo
+				String campos[]; // Arreglo para almacenar los campos de cada registro
+				do {
+					linea = br.readLine(); // Leer una línea del archivo
+					if (linea != null) { // Si la línea es diferente de nulo (es decir, aún hay datos por leer)
+						campos = linea.split(","); // Dividir la línea en campos utilizando la coma como separador
+						// Crear un nuevo registro de usuario con los campos obtenidos y agregarlo a la
+						// lista
+						rex = new RegistroUsuario(campos[0], campos[1], campos[2]);
+						re.add(rex);
+					}
+				} while (linea != null); // Repetir hasta que no haya más líneas que leer
+				br.close(); // Cerrar el BufferedReader
+				modelo.fireTableDataChanged(); // Notificar al modelo que los datos han cambiado
+			} catch (Exception ex) { // Capturar cualquier excepción que pueda ocurrir durante la lectura del archivo
+				JOptionPane.showMessageDialog(null, "Error al abrir archivo"); // Mostrar un mensaje de error
+			}
+		}
+	}
 }
