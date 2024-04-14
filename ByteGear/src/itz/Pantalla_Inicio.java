@@ -127,16 +127,16 @@ public class Pantalla_Inicio extends JFrame {
 		
 		JMenuItem mntmComponentes = new JMenuItem("Componentes ");
 		mntmComponentes.setIcon(new ImageIcon("C:\\Users\\Wendy\\eclipse-workspace\\Proyecto Byte Gear\\bin\\Imagenes\\Componentes.png"));
-		mntmComponentes.setFont(new Font("Segoe UI", Font.PLAIN, 20));
+		mntmComponentes.setFont(new Font("Segoe UI", Font.PLAIN, 12));
 		mntmComponentes.setForeground(new Color(255, 255, 255));
 		mntmComponentes.setBackground(new Color(0, 0, 64));
 		mnOpciones.add(mntmComponentes);
 		
-		JMenuItem mntmIMPRESIÓN = new JMenuItem("IMPRESI\u00D3N");
-		mntmIMPRESIÓN.setIcon(new ImageIcon("C:\\Users\\Wendy\\eclipse-workspace\\Proyecto Byte Gear\\bin\\Imagenes\\impresora.png"));
-		mntmIMPRESIÓN.setBackground(new Color(0, 0, 64));
-		mntmIMPRESIÓN.setForeground(Color.WHITE);
-		mnOpciones.add(mntmIMPRESIÓN);
+		JMenuItem mntmIMPRESIÃ“N = new JMenuItem("IMPRESI\u00D3N");
+		mntmIMPRESIÃ“N.setIcon(new ImageIcon("C:\\Users\\Wendy\\eclipse-workspace\\Proyecto Byte Gear\\bin\\Imagenes\\impresora.png"));
+		mntmIMPRESIÃ“N.setBackground(new Color(0, 0, 64));
+		mntmIMPRESIÃ“N.setForeground(Color.WHITE);
+		mnOpciones.add(mntmIMPRESIÃ“N);
 		
 		JMenuItem mntmSOFTWARE = new JMenuItem("SOFTWARE");
 		mntmSOFTWARE.setIcon(new ImageIcon("C:\\Users\\Wendy\\eclipse-workspace\\Proyecto Byte Gear\\bin\\Imagenes\\Software.png"));
