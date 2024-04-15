@@ -215,11 +215,11 @@ public class Registro_Usuario extends JFrame {
 		btnEliminar.setFont(new Font("Tahoma", Font.BOLD, 15));
 		btnEliminar.setBounds(428, 265, 95, 30);
 		contentPane.add(btnEliminar);
-		// ==========================================================_Eliminar_==========================================================\\
+		// ==========================================================_Otros_==========================================================\\
 
 		JLabel lblNewLabel = new JLabel("");
-		lblNewLabel.setIcon(new ImageIcon("Imagenes/BG.png"));
-		lblNewLabel.setBounds(44, 62, 150, 234);
+		lblNewLabel.setIcon(new ImageIcon("Imagenes/BG 150220.png"));
+		lblNewLabel.setBounds(24, 62, 150, 234);
 		contentPane.add(lblNewLabel);
 
 		JLabel lblRegistro = new JLabel("Registro Usuario");
