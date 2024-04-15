@@ -180,8 +180,8 @@ public class Inicio_sesion extends JFrame {
 		
         //Igamgen ByteGear
 		JLabel lblNewLabel = new JLabel("");
-		lblNewLabel.setIcon(new ImageIcon("Imagenes/Byte Gear.jpg"));
-		lblNewLabel.setBounds(10, 76, 150, 220);
+		lblNewLabel.setIcon(new ImageIcon("Imagenes/BG 150220.png"));
+		lblNewLabel.setBounds(24, 62, 150, 234);
 		contentPane.add(lblNewLabel);
 		
 		JLabel lblPrimerNumero = new JLabel("INICIAR SESION");
